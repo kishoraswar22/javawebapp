@@ -4,17 +4,17 @@ pipeline {
     stages {
         stage('Code Checkout') {
             steps {
-                echo 'Code Checkout'
+                git changelog: false, poll: false, url: 'https://github.com/kishoraswar22/javawebapp.git'
             }
         }
          stage('Code Build') {
             steps {
-                echo 'Code Build'
+                sh 'mvn package'
             }
         }
          stage('Test') {
             steps {
-                echo 'Testing'
+                sh 'mvn test'
             }
         }
          stage('Deploy') {
